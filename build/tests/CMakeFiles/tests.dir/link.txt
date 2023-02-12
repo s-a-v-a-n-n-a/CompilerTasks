@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/tests.dir/lex/cases.cpp.o CMakeFiles/tests.dir/main.cpp.o -o tests  ../src/libcompiler.a /usr/lib/x86_64-linux-gnu/libfmt.a 

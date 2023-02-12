@@ -133,7 +133,7 @@ TEST_CASE("Lex types", "[lex]") {
   std::stringstream source(": Int Bool String Unit");
   lex::Lexer l{source};
 
-  CHECK(l.Matches(lex::TokenType::COLUMN));
+  CHECK(l.Matches(lex::TokenType::COLON));
 
   CHECK(l.Matches(lex::TokenType::TY_INT));
   CHECK(l.Matches(lex::TokenType::TY_BOOL));

@@ -34,11 +34,11 @@ class Lexer {
 
   std::optional<Token> MatchOperators();
 
-  std::optional<TokenType> MatchOperator();
+  std::optional<std::string> MatchOperator();
 
   ////////////////////////////////////////////////////////////////////
 
-  std::optional<Token> MatchLiterls();
+  std::optional<Token> MatchLiterals();
 
   std::optional<Token> MatchNumericLiteral();
 
@@ -50,12 +50,19 @@ class Lexer {
 
   ////////////////////////////////////////////////////////////////////
 
+  bool expectNextSymbol(char symbol);
+
+  bool expectSymbol(char symbol);
+
+  ////////////////////////////////////////////////////////////////////
+
  private:
   // For easy access to locations
-  Token prev_{};
+  Token prev_;
 
   // Current token
-  Token peek_{};
+  Token peek_;
+  bool expect_next_;
 
   Scanner scanner_;
   IdentTable table_;

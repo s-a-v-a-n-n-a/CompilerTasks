@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src",
+  "command": "/usr/bin/c++ -DFMT_LOCALE -I/home/anna/МФТИ/CompilerCourse/compilers-tasks/src -Wall -Wextra -std=c++2a -o CMakeFiles/compiler.dir/lex/lexer.cpp.o -c /home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/lexer.cpp",
+  "file": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/lexer.cpp"
+},
+{
+  "directory": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/app",
+  "command": "/usr/bin/c++ -DFMT_LOCALE -I/home/anna/МФТИ/CompilerCourse/compilers-tasks/src -Wall -Wextra -std=c++2a -o CMakeFiles/repl.dir/repl.cpp.o -c /home/anna/МФТИ/CompilerCourse/compilers-tasks/app/repl.cpp",
+  "file": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/app/repl.cpp"
+},
+{
+  "directory": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/tests",
+  "command": "/usr/bin/c++ -DFMT_LOCALE -I/home/anna/МФТИ/CompilerCourse/compilers-tasks/src -Wall -Wextra -std=c++2a -o CMakeFiles/tests.dir/lex/cases.cpp.o -c /home/anna/МФТИ/CompilerCourse/compilers-tasks/tests/lex/cases.cpp",
+  "file": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/tests/lex/cases.cpp"
+},
+{
+  "directory": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/tests",
+  "command": "/usr/bin/c++ -DFMT_LOCALE -I/home/anna/МФТИ/CompilerCourse/compilers-tasks/src -Wall -Wextra -std=c++2a -o CMakeFiles/tests.dir/main.cpp.o -c /home/anna/МФТИ/CompilerCourse/compilers-tasks/tests/main.cpp",
+  "file": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/tests/main.cpp"
+}
+]

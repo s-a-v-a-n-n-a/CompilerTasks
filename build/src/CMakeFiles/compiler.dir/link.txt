@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcompiler.a CMakeFiles/compiler.dir/lex/lexer.cpp.o
+/usr/bin/ranlib libcompiler.a
