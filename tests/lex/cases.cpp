@@ -8,7 +8,7 @@
 //////////////////////////////////////////////////////////////////////
 
 TEST_CASE("Lexer: Just works", "[lex]") {
-  std::stringstream source("1 + 2");
+  std::stringstream source("1 + 2.02");
   lex::Lexer l{source};
 
   CHECK(l.Matches(lex::TokenType::NUMBER));

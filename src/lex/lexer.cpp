@@ -95,7 +95,6 @@ void Lexer::SkipComments() {
 std::optional<Token> Lexer::MatchOperators() {
   auto matchResult = MatchOperator();
   if (matchResult.has_value()) {
-    // std::cout << "HERE " << scanner_.getCurrentState() << "\n";
     scanner_.shift(1);
     
     return Token(
@@ -112,11 +111,11 @@ std::optional<Token> Lexer::MatchOperators() {
 
 ////////////////////////////////////////////////////////////////////
 
-std::optional<std::string> Lexer::MatchOperator() { // std::optional<TokenType>
+std::optional<std::string> Lexer::MatchOperator() { 
   std::string result = "";
   
   char currentSymbol = scanner_.getCurrentSymbol();
-  // std::cout << "cur symb = " << currentSymbol << ", " << int(currentSymbol) << "\n";
+  
   switch (currentSymbol) {
     case '=':
       if (expectNextSymbol('=')) {
@@ -131,41 +130,41 @@ std::optional<std::string> Lexer::MatchOperator() { // std::optional<TokenType>
       if (expectNextSymbol('=')) {
         scanner_.shift(1);
         
-        return "!="; // TokenType::NOT_EQ;
+        return "!="; 
       } else {
-        return result + currentSymbol; // TokenType::NOT;
+        return result + currentSymbol; 
       }
       break;
     case '<':
-      return result + currentSymbol; // TokenType::LT;
+      return result + currentSymbol; 
     case '>':
-      return result + currentSymbol; // TokenType::GT;
+      return result + currentSymbol; 
     case '+':
-      return result + currentSymbol; // TokenType::PLUS;
+      return result + currentSymbol; 
     case '-':
-      return result + currentSymbol; // TokenType::MINUS;
+      return result + currentSymbol; 
     case '*':
-      return result + currentSymbol; // TokenType::STAR;
+      return result + currentSymbol; 
     case '/':
-      return result + currentSymbol; // TokenType::DIV;
+      return result + currentSymbol; 
     case '(':
-      return result + currentSymbol; // TokenType::LEFT_PAREN;
+      return result + currentSymbol; 
     case ')':
-      return result + currentSymbol; // TokenType::RIGHT_PAREN;
+      return result + currentSymbol; 
     case '[':
-      return result + currentSymbol; // TokenType::LEFT_BRACE;
+      return result + currentSymbol; 
     case ']':
-      return result + currentSymbol; // TokenType::RIGHT_BRACE;
+      return result + currentSymbol; 
     case '{':
-      return result + currentSymbol; // TokenType::LEFT_CBRACE;
+      return result + currentSymbol; 
     case '}':
-      return result + currentSymbol; // TokenType::RIGHT_CBRACE;
+      return result + currentSymbol; 
     case ',':
-      return result + currentSymbol; // TokenType::COMMA;
+      return result + currentSymbol; 
     case ':':
-      return result + currentSymbol; // TokenType::COLON;
+      return result + currentSymbol; 
     case ';':
-      return result + currentSymbol; // TokenType::SEMICOLUMN;
+      return result + currentSymbol; 
     case EOF:
       return "EOF";
     default:
@@ -199,8 +198,7 @@ std::optional<Token> Lexer::MatchNumericLiteral() {
   ssize_t digitsAmount = 0;
 
   char currentSymbol = scanner_.getCurrentSymbol();
-  // std::cout << "NUMBER HERE " << currentSymbol << "\n";
-
+  
   while (isdigit(currentSymbol)) {
     number = number * 10 + currentSymbol - '0';
 
@@ -212,30 +210,10 @@ std::optional<Token> Lexer::MatchNumericLiteral() {
 
   // error, if dot is first
   if (expectSymbol('.')) {
-    // scanner_.shift(1);
-
-    // currentSymbol = scanner_.getCurrentSymbol();
-    // ssize_t digitsAfterDotAmount = 1;
-    
-    // // error if dot is last
-    // while (isdigit(currentSymbol)) {
-    //   double currentAdding = (double)(currentSymbol - '0');
-
-    //   for (int i = 0; i < digitsAfterDotAmount; ++i) {
-    //     currentAdding /= 10;
-    //   }
-
-    //   number += currentAdding;
-
-    //   scanner_.shift(1);
-
-    //   currentSymbol = scanner_.getCurrentSymbol();
-    //   ++digitsAfterDotAmount;
-    // }
     std::string fraction = "0.";
     ssize_t digitsAfterDotAmount = 0;
     while (isdigit(currentSymbol)) {
-      fraction += std::string(currentSymbol);
+      fraction += currentSymbol;
 
       scanner_.shift(1);
 
@@ -244,7 +222,8 @@ std::optional<Token> Lexer::MatchNumericLiteral() {
     }
 
     if (digitsAfterDotAmount > 0) {
-      number += strtod(fraction);
+      char *end = nullptr;
+      number += strtod(fraction.c_str(), &end);
     } // else error
 
     if (digitsAmount > 0) {
@@ -268,7 +247,7 @@ std::optional<Token> Lexer::MatchNumericLiteral() {
     );
   }
 
-  // maybe distinct integers and doubles ?????????????????
+  // maybe distinct integers and doubles?
 
   return std::nullopt;
 }
@@ -315,13 +294,9 @@ std::optional<Token> Lexer::MatchCharLiteral() {
 std::optional<Token> Lexer::MatchStringLiteral() {
   std::string matchResult = "";
   
-  // std::cout << "TRYING TO READ STRING\n";
-  
   if (!expectSymbol('\"')) {
     return std::nullopt;
   }
-
-  // std::cout << "First SYMBOL OF STRING FOUND\n";
 
   matchResult.push_back('\"');
   scanner_.shift(1);
