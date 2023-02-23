@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/compiler.dir/lex/lexer.cpp.o"
   "CMakeFiles/compiler.dir/lex/lexer.cpp.o.d"
+  "CMakeFiles/compiler.dir/lex/token_type.cpp.o"
+  "CMakeFiles/compiler.dir/lex/token_type.cpp.o.d"
   "libcompiler.a"
   "libcompiler.pdb"
 )

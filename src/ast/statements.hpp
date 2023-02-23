@@ -21,13 +21,12 @@ class ExprStatement : public Statement {
   ExprStatement(Expression* expr) : expr_{expr} {
   }
 
-  virtual void Accept(Visitor*) override {
-    // visitor->VisitExprStatement(this);
-    std::abort();
+  virtual void Accept(Visitor* visitor) override {
+    visitor->VisitExprStatement(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return expr_->GetLocation();
   }
 
   Expression* expr_;
@@ -37,18 +36,21 @@ class ExprStatement : public Statement {
 
 class AssignmentStatement : public Statement {
  public:
-  AssignmentStatement() {
-  }
+  AssignmentStatement(LvalueExpression *lvalue, Expression *expr, lex::Token *assignment)
+  : lvalue_(lvalue), expr_(expr), assign_token_(assignment) {}
 
-  virtual void Accept(Visitor*) override {
-    std::abort();
+  virtual void Accept(Visitor* visitor) override {
+    visitor->VisitAssignmentStatement(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return assign_token_->getLocation();
   }
 
-  // ???
+  LvalueExpression *lvalue_;
+  Expression *expr_;
+
+  lex::Token *assign_token_;
 };
 
 //////////////////////////////////////////////////////////////////////

@@ -28,16 +28,23 @@ class LvalueExpression : public Expression {};
 class ComparisonExpression : public Expression {
  public:
   // Constructor
+  ComparisonExpression(Expression *leftExpr, Expression *rightExpr, lex::Token comparator)
+  : leftExpr_(leftExpr), rightExpr_(rightExpr), comparator_(comparator) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor* visitor) override {
+    visitor->VisitComparisonExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return comparator_.getLocation();
   }
 
   // TODO: fields, helpers, etc...
+
+  Expression *leftExpr_;
+  Expression *rightExpr_;
+
+  lex::Token comparator_;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -46,17 +53,23 @@ class ComparisonExpression : public Expression {
 
 class BinaryExpression : public Expression {
  public:
-  // Constructor
+  BinaryExpression(Expression *leftExpr, Expression *rightExpr, lex::Token arithmetic)
+  : leftExpr_(leftExpr), rightExpr_(rightExpr), arithmetic_(arithmetic) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor* visitor) override {
+    visitor->VisitBinaryExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return arithmetic_.getLocation();
   }
 
   // TODO: fields, helpers, etc...
+
+  Expression *leftExpr_;
+  Expression *rightExpr_;
+
+  lex::Token arithmetic_;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -64,118 +77,134 @@ class BinaryExpression : public Expression {
 class UnaryExpression : public Expression {
  public:
   // Constructor
+  UnaryExpression(Expression *expr, lex::Token unary)
+  : expr_(expr), unary_(unary) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor* visitor) override {
+    visitor->VisitUnaryExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return unary_.getLocation();
   }
 
-  // TODO: fields, helpers, etc...
+  Expression *expr_;
+
+  lex::Token unary_;
 };
 
 //////////////////////////////////////////////////////////////////////
 
 class FnCallExpression : public Expression {
  public:
-  // Constructor
+  FnCallExpression(lex::Token *functionName, const std::vector<Expression*> &args)
+  : functionName_(functionName), args_(args) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor* visitor) override {
+    visitor->VisitFnCallExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return functionName_->getLocation();
   }
 
-  // TODO: fields, helpers, etc...
+  lex::Token *functionName_;
+  std::vector<Expression*> args_;
 };
 
 //////////////////////////////////////////////////////////////////////
 
 class BlockExpression : public Expression {
  public:
-  // Constructor
+  BlockExpression(lex::Token brace, const std::vector<Statement*> &body, Expression *result)
+  : brace_(brace), body_(body), result_(result) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor *visitor) override {
+    visitor->VisitBlockExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return brace_.getLocation();
   }
 
-  // TODO: fields, helpers, etc...
+  lex::Token brace_ = {};
+  std::vector<Statement*> body_;
+
+  Expression *result_;
 };
 
 //////////////////////////////////////////////////////////////////////
 
 class IfExpression : public Expression {
  public:
-  // Constructor
+  IfExpression(Expression *condition, Expression *thenBranch, Expression *elseBranch)
+  : condition_(condition), thenBranch_(thenBranch), elseBranch_(elseBranch) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor *visitor) override {
+    visitor->VisitIfExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return condition_->GetLocation();
   }
 
-  // TODO: fields, helpers, etc...
+  Expression *condition_;
+  Expression *thenBranch_;
+  Expression *elseBranch_;
 };
 
 //////////////////////////////////////////////////////////////////////
 
 class LiteralExpression : public Expression {
  public:
-  // Constructor
+  explicit LiteralExpression(lex::Token name)
+  : literalName_(name) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor *visitor) override {
+    visitor->VisitLiteralExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    literalName_->getLocation();
   }
 
-  // TODO: fields, helpers, etc...
+  lex::Token literalName_;
 };
 
 //////////////////////////////////////////////////////////////////////
 
 class VarAccessExpression : public LvalueExpression {
  public:
-  // Constructor
+  explicit VarAccessExpression(lex::Token var) 
+  : var_(var) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor* visitor) override {
+    visitor->VisitVarAccessExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return var_.getLocation();
   }
 
-  // TODO: fields, helpers, etc...
+  lex::Token var_;
 };
 
 //////////////////////////////////////////////////////////////////////
 
 class ReturnExpression : public Expression {
  public:
-  // Constructor
+  ReturnExpression(Expression *returnExpr)
+  : returnExpression_(returnExpr) {}
 
-  virtual void Accept(Visitor* /*visitor*/) override {
-    std::abort();
+  virtual void Accept(Visitor *visitor) override {
+    visitor->VisitReturnExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    std::abort();
+    return returnExpression_->GetLocation();
   }
 
-  // TODO: fields, helpers, etc...
+  Expression *returnExpression_;
 };
 
 //////////////////////////////////////////////////////////////////////

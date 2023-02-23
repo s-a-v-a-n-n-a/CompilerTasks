@@ -102,7 +102,8 @@ std::optional<Token> Lexer::MatchOperators() {
       matchResult.value(),
       std::nullopt,
       scanner_.getCurrentState(),
-      matchResult.value().size()
+      matchResult.value().size(),
+      scanner_.getPosition()
     );
   }
 
@@ -232,7 +233,8 @@ std::optional<Token> Lexer::MatchNumericLiteral() {
         "",
         number,
         scanner_.getCurrentState(),
-        digitsAmount + digitsAfterDotAmount + 1
+        digitsAmount + digitsAfterDotAmount + 1,
+        scanner_.getPosition()
       );
     } 
   }
@@ -243,7 +245,8 @@ std::optional<Token> Lexer::MatchNumericLiteral() {
       "",
       number,
       scanner_.getCurrentState(),
-      digitsAmount
+      digitsAmount,
+      scanner_.getPosition()
     );
   }
 
@@ -285,7 +288,8 @@ std::optional<Token> Lexer::MatchCharLiteral() {
     "",
     matchResult,
     scanner_.getCurrentState(),
-    matchResult.size()
+    matchResult.size(),
+    scanner_.getPosition()
   );
 }
 
@@ -321,7 +325,8 @@ std::optional<Token> Lexer::MatchStringLiteral() {
     "",
     matchResult,
     scanner_.getCurrentState(),
-    matchResult.size()
+    matchResult.size(),
+    scanner_.getPosition()
   );
 }
 
@@ -348,7 +353,8 @@ std::optional<Token> Lexer::MatchWords() {
       "",
       matchResult,
       scanner_.getCurrentState(),
-      matchResult.size()
+      matchResult.size(),
+      scanner_.getPosition()
     );
   }
 
@@ -357,7 +363,8 @@ std::optional<Token> Lexer::MatchWords() {
     matchResult,
     "",
     scanner_.getCurrentState(),
-    matchResult.size()
+    matchResult.size(),
+    scanner_.getPosition()
   );
 }
 

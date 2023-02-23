@@ -5,6 +5,11 @@
   "file": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/lexer.cpp"
 },
 {
+  "directory": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src",
+  "command": "/usr/bin/c++ -DFMT_LOCALE -I/home/anna/МФТИ/CompilerCourse/compilers-tasks/src -Wall -Wextra -std=c++2a -o CMakeFiles/compiler.dir/lex/token_type.cpp.o -c /home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/token_type.cpp",
+  "file": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/token_type.cpp"
+},
+{
   "directory": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/app",
   "command": "/usr/bin/c++ -DFMT_LOCALE -I/home/anna/МФТИ/CompilerCourse/compilers-tasks/src -Wall -Wextra -std=c++2a -o CMakeFiles/repl.dir/repl.cpp.o -c /home/anna/МФТИ/CompilerCourse/compilers-tasks/app/repl.cpp",
   "file": "/home/anna/МФТИ/CompilerCourse/compilers-tasks/app/repl.cpp"

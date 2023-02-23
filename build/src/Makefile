@@ -154,6 +154,30 @@ lex/lexer.cpp.s:
 	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/compiler.dir/build.make src/CMakeFiles/compiler.dir/lex/lexer.cpp.s
 .PHONY : lex/lexer.cpp.s
 
+lex/token_type.o: lex/token_type.cpp.o
+.PHONY : lex/token_type.o
+
+# target to build an object file
+lex/token_type.cpp.o:
+	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/compiler.dir/build.make src/CMakeFiles/compiler.dir/lex/token_type.cpp.o
+.PHONY : lex/token_type.cpp.o
+
+lex/token_type.i: lex/token_type.cpp.i
+.PHONY : lex/token_type.i
+
+# target to preprocess a source file
+lex/token_type.cpp.i:
+	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/compiler.dir/build.make src/CMakeFiles/compiler.dir/lex/token_type.cpp.i
+.PHONY : lex/token_type.cpp.i
+
+lex/token_type.s: lex/token_type.cpp.s
+.PHONY : lex/token_type.s
+
+# target to generate assembly for a file
+lex/token_type.cpp.s:
+	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/compiler.dir/build.make src/CMakeFiles/compiler.dir/lex/token_type.cpp.s
+.PHONY : lex/token_type.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -166,6 +190,9 @@ help:
 	@echo "... lex/lexer.o"
 	@echo "... lex/lexer.i"
 	@echo "... lex/lexer.s"
+	@echo "... lex/token_type.o"
+	@echo "... lex/token_type.i"
+	@echo "... lex/token_type.s"
 .PHONY : help
 
 

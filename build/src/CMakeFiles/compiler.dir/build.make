@@ -83,17 +83,33 @@ src/CMakeFiles/compiler.dir/lex/lexer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compiler.dir/lex/lexer.cpp.s"
 	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/lexer.cpp -o CMakeFiles/compiler.dir/lex/lexer.cpp.s
 
+src/CMakeFiles/compiler.dir/lex/token_type.cpp.o: src/CMakeFiles/compiler.dir/flags.make
+src/CMakeFiles/compiler.dir/lex/token_type.cpp.o: /home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/token_type.cpp
+src/CMakeFiles/compiler.dir/lex/token_type.cpp.o: src/CMakeFiles/compiler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/compiler.dir/lex/token_type.cpp.o"
+	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/compiler.dir/lex/token_type.cpp.o -MF CMakeFiles/compiler.dir/lex/token_type.cpp.o.d -o CMakeFiles/compiler.dir/lex/token_type.cpp.o -c /home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/token_type.cpp
+
+src/CMakeFiles/compiler.dir/lex/token_type.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compiler.dir/lex/token_type.cpp.i"
+	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/token_type.cpp > CMakeFiles/compiler.dir/lex/token_type.cpp.i
+
+src/CMakeFiles/compiler.dir/lex/token_type.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compiler.dir/lex/token_type.cpp.s"
+	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anna/МФТИ/CompilerCourse/compilers-tasks/src/lex/token_type.cpp -o CMakeFiles/compiler.dir/lex/token_type.cpp.s
+
 # Object files for target compiler
 compiler_OBJECTS = \
-"CMakeFiles/compiler.dir/lex/lexer.cpp.o"
+"CMakeFiles/compiler.dir/lex/lexer.cpp.o" \
+"CMakeFiles/compiler.dir/lex/token_type.cpp.o"
 
 # External object files for target compiler
 compiler_EXTERNAL_OBJECTS =
 
 src/libcompiler.a: src/CMakeFiles/compiler.dir/lex/lexer.cpp.o
+src/libcompiler.a: src/CMakeFiles/compiler.dir/lex/token_type.cpp.o
 src/libcompiler.a: src/CMakeFiles/compiler.dir/build.make
 src/libcompiler.a: src/CMakeFiles/compiler.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libcompiler.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/anna/МФТИ/CompilerCourse/compilers-tasks/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libcompiler.a"
 	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src && $(CMAKE_COMMAND) -P CMakeFiles/compiler.dir/cmake_clean_target.cmake
 	cd /home/anna/МФТИ/CompilerCourse/compilers-tasks/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/compiler.dir/link.txt --verbose=$(VERBOSE)
 
