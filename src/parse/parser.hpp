@@ -16,17 +16,17 @@ class Parser {
   Statement* ParseStatement();
 
   Statement* ParseExprStatement();
-  AssignmentStatement* ParseAssignment(LvalueExpression* target);
+  AssignmentStatement* ParseAssignmentStmt(); // LvalueExpression* target
 
   ////////////////////////////////////////////////////////////////////
 
   Declaration* ParseDeclaration();
 
   Declaration* ParsePrototype();
-  FunDeclStatement* ParseFunPrototype();
-  FunDeclStatement* ParseFunDeclStatement();
-  VarDeclStatement* ParseVarDeclStatement();
-  FunDeclStatement* ParseFunDeclarationStandalone();
+  FunDeclaration* ParseFunPrototype();
+  FunDeclaration* ParseFunDeclStatement();
+  VarDeclaration* ParseVarDeclStatement();
+  FunDeclaration* ParseFunDeclarationStandalone();
 
   ////////////////////////////////////////////////////////////////////
 

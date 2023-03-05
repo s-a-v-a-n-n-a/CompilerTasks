@@ -136,13 +136,21 @@ std::optional<std::string> Lexer::MatchOperator() {
         return result + currentSymbol; 
       }
       break;
+    case '-':
+      if (expectNextSymbol('>')) {
+        scanner_.shift();
+
+        return "->";
+      } else {
+        return result + currentSymbol; 
+      }
+    case '*':
+      return result + currerntSymbol;
     case '<':
       return result + currentSymbol; 
     case '>':
       return result + currentSymbol; 
     case '+':
-      return result + currentSymbol; 
-    case '-':
       return result + currentSymbol; 
     case '*':
       return result + currentSymbol; 

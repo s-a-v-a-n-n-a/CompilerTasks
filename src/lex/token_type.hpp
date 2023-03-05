@@ -22,7 +22,7 @@ enum class TokenType {
 
   PLUS,
   MINUS,
-  STAR,
+  MUL,
   DIV,
 
   ASSIGN,
@@ -54,6 +54,11 @@ enum class TokenType {
   RETURN,
 
   TOKEN_EOF,
+
+  STAR,
+  ARROW,
+
+  BLETERN,
 
   NONE
 };

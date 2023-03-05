@@ -136,7 +136,6 @@ public:
     
     virtual void VisitVarAccessExpression(VarAccessExpression *expr) override {
         indent();
-
         fmt::print("{}\n", expr->var_.getName());
     }
     
@@ -148,6 +147,27 @@ public:
         expr->returnExpression_->Accept(this);
         --tabs;
     }
-};
+
+    virtual void VisitVarDeclaration(VarDeclaration *expr) override {
+        indent();
+        fmt::print("{}\n", expr->GetName());
+
+        ++tabs;
+        expr->lvalue_->Accept(this);
+        --tabs;
+    }
+
+    virtual void VisitFunDeclaration(FunDeclaration *expr) override {
+        indent();
+        fmt::print("{}\n", expr->GetName());
+        fmt::print("(");
+
+        for (auto parameter : expr->parameters_) {
+            fmt::print("{}\n", parameter.getName());
+        }
+
+        fmt::print(")");
+    } 
+ };
 
 //////////////////////////////////////////////////////////////////////

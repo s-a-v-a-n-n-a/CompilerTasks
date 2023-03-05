@@ -42,6 +42,10 @@ struct Token {
     location_(location)
     {}
 
+    TokenType getType() {
+        return type_;
+    }
+
     Location getLocation() {
         return location_;
     }

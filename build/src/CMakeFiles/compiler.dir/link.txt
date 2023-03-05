@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcompiler.a CMakeFiles/compiler.dir/lex/lexer.cpp.o CMakeFiles/compiler.dir/lex/token_type.cpp.o
-/usr/bin/ranlib libcompiler.a

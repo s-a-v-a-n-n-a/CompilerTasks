@@ -10,17 +10,18 @@ namespace lex {
   code(FALSE)               \
   code(PLUS)                \
   code(MINUS)               \
+  code(MUL)                 \
   code(DIV)                 \
   code(ASSIGN)              \
   code(EQUALS)              \
   code(NOT_EQ)              \
   code(LT)                  \
+  code(GT)                  \
   code(LEFT_PAREN)          \
   code(RIGHT_PAREN)         \
   code(LEFT_CBRACE)         \
   code(RIGHT_CBRACE)        \
   code(NOT)                 \
-  code(STAR)                \
   code(FUN)                 \
   code(COMMA)               \
   code(VAR)                 \
@@ -34,10 +35,12 @@ namespace lex {
   code(THEN)                \
   code(ELSE)                \
   code(COLON)               \
-  code(SEMICOLUMN)         \
+  code(SEMICOLUMN)          \
   code(RETURN)              \
   code(YIELD)               \
-  code(TOKEN_EOF)
+  code(TOKEN_EOF)           \
+  code(STAR)                \
+  code(ARROW)
 
 ////////////////////////////////////////////////////////////////
 

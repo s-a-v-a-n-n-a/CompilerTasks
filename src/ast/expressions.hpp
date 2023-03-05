@@ -89,7 +89,6 @@ class UnaryExpression : public Expression {
   }
 
   Expression *expr_;
-
   lex::Token unary_;
 };
 
@@ -97,8 +96,8 @@ class UnaryExpression : public Expression {
 
 class FnCallExpression : public Expression {
  public:
-  FnCallExpression(lex::Token *functionName, const std::vector<Expression*> &args)
-  : functionName_(functionName), args_(args) {}
+  FnCallExpression(lex::Token functionName, Expression *callable, const std::vector<Expression*> &args)
+  : functionName_(functionName), callable_(callable), args_(args) {}
 
   virtual void Accept(Visitor* visitor) override {
     visitor->VisitFnCallExpression(this);
@@ -108,8 +107,28 @@ class FnCallExpression : public Expression {
     return functionName_->getLocation();
   }
 
-  lex::Token *functionName_;
+  lex::Token functionName_;
+  Expression *callable_;
   std::vector<Expression*> args_;
+};
+
+//////////////////////////////////////////////////////////////////////
+
+class DereferenceExpression : public Expression {
+ public:
+  DereferenceExpression(lex::Token star, Expression *unary)
+  : star_(star), unary_(unary) {}
+
+  virtual void Accept(Visitor *visitor) override {
+    visitor->VisitDereferenceExpression(this);
+  }
+
+  virtual lex::Location GetLocation() override {
+    return star_.getLocation();
+  }
+
+  lex::Token star_;
+  Expression *unary_;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -137,18 +156,31 @@ class BlockExpression : public Expression {
 
 class IfExpression : public Expression {
  public:
-  IfExpression(Expression *condition, Expression *thenBranch, Expression *elseBranch)
-  : condition_(condition), thenBranch_(thenBranch), elseBranch_(elseBranch) {}
+  IfExpression(
+    lex::Token ifToken, 
+    Expression *condition, 
+    lex::Token thenToken, 
+    Expression *thenBranch, 
+    Expression *elseBranch
+    )
+  : ifToken_(ifToken),
+    condition_(condition), 
+    thenToken_(thenToken),
+    thenBranch_(thenBranch),
+    elseBranch_(elseBranch) 
+  {}
 
   virtual void Accept(Visitor *visitor) override {
     visitor->VisitIfExpression(this);
   }
 
   virtual lex::Location GetLocation() override {
-    return condition_->GetLocation();
+    return ifToken_.getLocation();
   }
 
+  lex::Token ifToken_;
   Expression *condition_;
+  lex::Token thenToken_;
   Expression *thenBranch_;
   Expression *elseBranch_;
 };

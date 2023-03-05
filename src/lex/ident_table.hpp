@@ -39,7 +39,7 @@ class IdentTable {
     
     map_.insert({"+", TokenType::PLUS});
     map_.insert({"-", TokenType::MINUS});
-    map_.insert({"*", TokenType::STAR});
+    map_.insert({"*", TokenType::MUL});
     map_.insert({"/", TokenType::DIV});
 
     map_.insert({"=", TokenType::ASSIGN});
@@ -72,6 +72,11 @@ class IdentTable {
     map_.insert({"return", TokenType::RETURN});
     
     map_.insert({"EOF", TokenType::TOKEN_EOF});
+    
+    map_.insert({"*", TokenType::STAR});
+    map_.insert({"->", TokenType::ARROW});
+    
+    map_.insert({"bletern", TokenType::BLETERN});
   }
 
  private:
