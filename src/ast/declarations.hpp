@@ -37,6 +37,8 @@ class VarDeclaration : public Declaration {
   
   lex::Token name_;
   Expression* lvalue_;
+
+  ast::scope::Context *layer_ = nullptr;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -62,6 +64,8 @@ class FunDeclaration : public Declaration {
   lex::Token name_;
   std::vector<lex::Token> parameters_;
   Expression* body_;
+
+  ast::scope::Context* layer_ = nullptr;
 };
 
 //////////////////////////////////////////////////////////////////////

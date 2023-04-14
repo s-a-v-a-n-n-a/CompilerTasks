@@ -104,12 +104,14 @@ class FnCallExpression : public Expression {
   }
 
   virtual lex::Location GetLocation() override {
-    return functionName_->getLocation();
+    return functionName_.getLocation();
   }
 
   lex::Token functionName_;
   Expression *callable_;
   std::vector<Expression*> args_;
+
+  ast::scope::Context *layer_ = nullptr;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -129,6 +131,8 @@ class DereferenceExpression : public Expression {
 
   lex::Token star_;
   Expression *unary_;
+  
+  ast::scope::Context *layer_ = nullptr;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -150,6 +154,8 @@ class BlockExpression : public Expression {
   std::vector<Statement*> body_;
 
   Expression *result_;
+
+  ast::scope::Context::ScopeLayer *layer_ = nullptr;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -219,6 +225,8 @@ class VarAccessExpression : public LvalueExpression {
   }
 
   lex::Token var_;
+
+  ast::scope::Context *layer_ = nullptr;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -236,7 +244,13 @@ class ReturnExpression : public Expression {
     return returnExpression_->GetLocation();
   }
 
+  std::string GetName() {
+    return returnFrom;
+  }
+
+  std::string returnFrom = "";
   Expression *returnExpression_;
+  ast::scope::Context *layer_ = nullptr;
 };
 
 //////////////////////////////////////////////////////////////////////

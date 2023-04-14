@@ -40,7 +40,8 @@ namespace lex {
   code(YIELD)               \
   code(TOKEN_EOF)           \
   code(STAR)                \
-  code(ARROW)
+  code(ARROW)               \
+  code(BLETERNs)
 
 ////////////////////////////////////////////////////////////////
 
